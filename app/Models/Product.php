@@ -13,4 +13,9 @@ class Product extends Model
         'name', 'image',
         'price', 'stock'
     ];
+
+    public function getImageAttribute($image)
+    {
+        return asset('uploads/products/'.$image);
+    }
 }
