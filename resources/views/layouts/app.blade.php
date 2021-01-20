@@ -26,8 +26,8 @@
                     <li class="nav-item {{request()->routeIs('login') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('login')}}">Login</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Register</a>
+                    <li class="nav-item {{request()->routeIs('register') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('register')}}">Register</a>
                     </li>
                 @else
                     <li class="nav-item dropdown ml-auto">
