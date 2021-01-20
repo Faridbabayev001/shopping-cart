@@ -121,6 +121,14 @@ class Basket
     }
 
     /**
+     *  Delete all product from basket
+     */
+    public static function destroy()
+    {
+        session()->forget('cart');
+    }
+
+    /**
      *
      * Get all cart from session
      *
