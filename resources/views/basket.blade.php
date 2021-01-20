@@ -98,164 +98,36 @@
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="ibox">
-                    <div class="ibox-title">
-                        <span class="pull-right">(<strong>5</strong>) items</span>
-                        <h5>Items in your cart</h5>
-                    </div>
-                    <div class="ibox-content"   >
-                        <div class="table-responsive">
-                            <table class="table shoping-cart-table">
-                                <tbody>
-                                <tr>
-                                    <td width="90">
-                                        <div >
-                                            <img class="img-fluid" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
-                                        </div>
-                                    </td>
-                                    <td class="desc">
-                                        <h3>
-                                            <a href="#" class="text-navy">
-                                                Desktop publishing software
-                                            </a>
-                                        </h3>
-
-                                        <div class="m-t-sm">
-                                            <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        $180,00
-                                    </td>
-                                    <td width="65">
-                                        <input type="text" class="form-control" placeholder="1">
-                                    </td>
-                                    <td>
-                                        <h4>
-                                            $180,00
-                                        </h4>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                    <div class="ibox-content"   >
-                        <div class="table-responsive">
-                            <table class="table shoping-cart-table">
-                                <tbody>
-                                <tr>
-                                    <td width="90">
-                                        <div >
-                                            <img class="img-fluid" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
-                                        </div>
-                                    </td>
-                                    <td class="desc">
-                                        <h3>
-                                            <a href="#" class="text-navy">
-                                                Desktop publishing software
-                                            </a>
-                                        </h3>
-
-                                        <div class="m-t-sm">
-                                            <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        $180,00
-                                    </td>
-                                    <td width="65">
-                                        <input type="text" class="form-control" placeholder="1">
-                                    </td>
-                                    <td>
-                                        <h4>
-                                            $180,00
-                                        </h4>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                    <div class="ibox-content"   >
-                        <div class="table-responsive">
-                            <table class="table shoping-cart-table">
-                                <tbody>
-                                <tr>
-                                    <td width="90">
-                                        <div >
-                                            <img class="img-fluid" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
-                                        </div>
-                                    </td>
-                                    <td class="desc">
-                                        <h3>
-                                            <a href="#" class="text-navy">
-                                                Desktop publishing software
-                                            </a>
-                                        </h3>
-
-                                        <div class="m-t-sm">
-                                            <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        $180,00
-                                    </td>
-                                    <td width="65">
-                                        <input type="text" class="form-control" placeholder="1">
-                                    </td>
-                                    <td>
-                                        <h4>
-                                            $180,00
-                                        </h4>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                    <div class="ibox-content">
-                        <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
-                        <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3">
-                <div class="ibox">
-                    <div class="ibox-title">
-                        <h5>Cart Summary</h5>
-                    </div>
-                    <div class="ibox-content">
-                    <span>
-                        Total
-                    </span>
-                        <h2 class="font-bold">
-                            $390,00
-                        </h2>
-
-                        <hr>
-                        <span class="text-muted small">
-                        *For United States, France and Germany applicable sales tax will be applied
-                    </span>
-                        <div class="m-t-sm">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
-                                <a href="#" class="btn btn-white btn-sm"> Cancel</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row basketContent">
+            Loading ...
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $.get('{{route('getCart')}}',function (result) {
+            appendCartContent(result)
+        })
+
+        $(document).on('change','.product__count',function (e) {
+            e.preventDefault();
+            let product_id = $(this).data('id');
+            let product_count = $(this).val();
+            $.get('/basket/updateCount/'+product_id+'/'+product_count,function (result) {
+                appendCartContent(result)
+            })
+        })
+
+        $(document).on('click','.product__del-btn',function (e) {
+            e.preventDefault();
+            let product_id = $(this).data('id');
+            $.get('/basket/removeCart/'+product_id,function (result) {
+                appendCartContent(result)
+            })
+        })
+
+        function appendCartContent(content) {
+            $('.basketContent').html(' ').append(content)
+        }
+    </script>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,15 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[HomeController::class,'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('login',[AuthController::class,'show_login_form'])->name('login_form');
-Route::post('login',[AuthController::class,'login'])->name('login');
+    Route::get('login', [AuthController::class, 'show_login_form'])->name('login_form');
+    Route::post('login', [AuthController::class, 'login'])->name('login');
 
-Route::post('logout',[AuthController::class,'logout'])->name('logout');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('register',[AuthController::class,'show_register_form'])->name('register_form');
-Route::post('register',[AuthController::class,'register'])->name('register');
+    Route::get('register', [AuthController::class, 'show_register_form'])->name('register_form');
+    Route::post('register', [AuthController::class, 'register'])->name('register');
 
-Route::view('/basket','basket')->name('basket');
-Route::view('/checkout','checkout')->name('checkout');
+    Route::view('/basket', 'basket')->name('basket');
+    Route::get('addToBasket/{productId}', [BasketController::class, 'addToBasket'])->name('addToBasket');
+    Route::get('getCart',[BasketController::class,'getCartContent'])->name('getCart');
+    Route::get('basket/updateCount/{productId}/{productCount}',[BasketController::class,'updateProductCount'])->name('updateCount');
+    Route::get('basket/removeCart/{productId}',[BasketController::class,'removeProduct'])->name('removeProduct');
+
+    Route::view('/checkout', 'checkout')->name('checkout');
