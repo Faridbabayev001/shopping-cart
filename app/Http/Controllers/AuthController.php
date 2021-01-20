@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\V1\Contracts\AuthRepositoryInterface;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,8 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $result = $this->authRepository->register($request->all());
-        return $result ? redirect(route('home')) : back();
+        $registerResult = $this->authRepository->register($request->all());
+        return $registerResult ? redirect(route('home')) : back();
     }
 
     /**
@@ -32,6 +33,12 @@ class AuthController extends Controller
     public function show_login_form()
     {
         return view('login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $loginResult = $this->authRepository->login($request->only('email','password'));
+        return $loginResult ? redirect(route('home')) : back()->withErrors(['errorMessage' => 'These credentials do not match our records.']);
     }
 
     /**

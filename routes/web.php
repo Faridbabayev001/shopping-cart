@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::get('login',[AuthController::class,'show_login_form'])->name('login_form');
+Route::post('login',[AuthController::class,'login'])->name('login');
 
 Route::post('logout',[AuthController::class,'logout'])->name('logout');
 
