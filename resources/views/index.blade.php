@@ -11,7 +11,11 @@
                         <div class="buy d-flex justify-content-between align-items-center">
                             <div class="price text-success"><h5 class="mt-4">{{$product->price ?? ''}} AZN</h5></div>
                             @if($product->stock > 1)
-                                <a href="#" class="btn btn-danger mt-3"> Add to Cart</a>
+                                @if(\App\Http\Helpers\Basket::check($product->id))
+                                    <a href="{{route('removeProduct',['productId' => $product->id])}}" class="btn btn-danger mt-3"> Remove from cart</a>
+                                @else
+                                    <a href="{{route('addToBasket',['productId' => $product->id])}}" class="btn btn-info mt-3"> Add to Cart</a>
+                                @endif
                             @endif
                         </div>
                     </div>

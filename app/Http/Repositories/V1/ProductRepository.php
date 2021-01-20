@@ -17,4 +17,9 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return Product::all();
     }
+
+    public function find_by_id($id)
+    {
+        return Product::findOrFail($id);
+    }
 }

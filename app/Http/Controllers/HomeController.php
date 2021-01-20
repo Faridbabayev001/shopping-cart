@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\Basket;
 use App\Http\Repositories\V1\Contracts\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
