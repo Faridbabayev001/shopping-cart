@@ -1,0 +1,56 @@
+[33mcommit c956e7a5700036aaef7bab65a747cfd5d20d2537[m[33m ([m[1;36mHEAD -> [m[1;32mtask-2[m[33m)[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 08:49:12 2021 +0400
+
+    Task-2: endings in your working directory
+
+[33mcommit 0b9999728d52592febaf7ff494bc2f34683d5d87[m[33m ([m[1;31morigin/task-2[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: c5ce14e 7f57bca
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 08:14:59 2021 +0400
+
+    Merge pull request #3 from Faridbabayev001/task-1
+    
+    Complete task-1
+
+[33mcommit 7f57bca59c27c2b08ba8d63ef126d16e61475ae9[m[33m ([m[1;31morigin/task-1[m[33m, [m[1;32mtask-1[m[33m)[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 08:13:39 2021 +0400
+
+    Task-1: create checkout page:
+
+[33mcommit 55258a1ddf4043774386d7d174c077b911830299[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 08:09:56 2021 +0400
+
+    Task-1: Create basket page
+
+[33mcommit 86e2a3840b36c59a3a2f2003d8d1de9314782d60[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 07:53:51 2021 +0400
+
+    Task-1: Create register page
+
+[33mcommit 4d29f2754837fb1e0379c6ec85ebd81e4295fe3c[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 07:49:30 2021 +0400
+
+    Task-1: Create login page
+
+[33mcommit 3d91326d502485f9c388bda520c2353f9e6444a9[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 07:40:43 2021 +0400
+
+    Task-1: Create layout and products
+
+[33mcommit 555d4bafaadf9f39cf120896f6582b3f2143db17[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 07:03:41 2021 +0400
+
+    modified gitignore file remove .idea folder
+
+[33mcommit c5ce14e4251ee2c19656c676bf2afb77ee23e8ff[m
+Author: Farid Babayev <farid.b@code.edu.az>
+Date:   Wed Jan 20 06:54:42 2021 +0400
+
+    Task-0: Add empty laravel project
