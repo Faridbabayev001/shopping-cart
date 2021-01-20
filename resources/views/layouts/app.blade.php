@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Shopping Cart</a>
+        <a class="navbar-brand" href="{{route('home')}}">Shopping Cart</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,20 +26,21 @@
                     <a class="nav-link" href="{{route('basket')}}">Basket</a>
                 </li>
                 @guest
-                    <li class="nav-item {{request()->routeIs('login') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{route('login')}}">Login</a>
+                    <li class="nav-item {{request()->routeIs('login_form') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('login_form')}}">Login</a>
                     </li>
-                    <li class="nav-item {{request()->routeIs('register') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{route('register')}}">Register</a>
+                    <li class="nav-item {{request()->routeIs('register_form') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('register_form')}}">Register</a>
                     </li>
                 @else
                     <li class="nav-item dropdown ml-auto">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false"> Dropdown link </a>
+                           aria-haspopup="true" aria-expanded="false">Welcome  {{auth()->user()->name ?? ''}}</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
+                            <form id="logout-form" action="{{ route('logout') }}"  method="POST" style="display: none;">
+                               @csrf
+                            </form>
                         </div>
                     </li>
                 @endguest
