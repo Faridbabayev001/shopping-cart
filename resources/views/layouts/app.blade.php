@@ -5,9 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    @yield('css')
 
     <title>Shopping Cart</title>
 </head>
@@ -19,8 +22,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Basket</a>
+                <li class="nav-item {{request()->routeIs('basket') ? 'active' : ''}}">
+                    <a class="nav-link" href="{{route('basket')}}">Basket</a>
                 </li>
                 @guest
                     <li class="nav-item {{request()->routeIs('login') ? 'active' : ''}}">
