@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,10 +28,11 @@ use Illuminate\Support\Facades\Route;
     Route::get('register', [AuthController::class, 'show_register_form'])->name('register_form');
     Route::post('register', [AuthController::class, 'register'])->name('register');
 
-    Route::view('/basket', 'basket')->name('basket');
+    Route::view('basket', 'basket')->name('basket');
     Route::get('addToBasket/{productId}', [BasketController::class, 'addToBasket'])->name('addToBasket');
     Route::get('getCart',[BasketController::class,'getCartContent'])->name('getCart');
     Route::get('basket/updateCount/{productId}/{productCount}',[BasketController::class,'updateProductCount'])->name('updateCount');
     Route::get('basket/removeCart/{productId}',[BasketController::class,'removeProduct'])->name('removeProduct');
 
-    Route::view('/checkout', 'checkout')->name('checkout');
+    Route::get('checkout',[OrderController::class,'checkout'])->name('checkout');
+    Route::post('sendOrder',[OrderController::class,'sendOrder'])->name('sendOrder');

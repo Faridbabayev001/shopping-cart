@@ -68,7 +68,9 @@
             <hr>
             <div class="m-t-sm">
                 <div class="btn-group">
-                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                    @if($productCount)
+                         <a href="{{route('checkout')}}" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                    @endif
                 </div>
             </div>
         </div>
